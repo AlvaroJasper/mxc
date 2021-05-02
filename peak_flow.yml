@@ -1,5 +1,3 @@
-before_script:
-  - RAILS_ENV=test bundle exec rake db:schema:load
 builds:
   build_1:
     name: RSpec 1
